@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Documentos PDF del Instituto de Arquitectura y Ciudad Sostenibles.">
+    <title>Documentos PDF · IARCS</title>
+    <link rel="stylesheet" href="src/estilos.css">
+    <style>
+        .document-preview {
+            display: block;
+            width: 100%;
+            height: 240px;
+            border: 0;
+            background: var(--gris);
+        }
+
+        .documents-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .documents-actions a {
+            color: var(--verde-oscuro);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a class="logo" href="index.html" aria-label="Volver al inicio">
+                <span class="logo-image-crop">
+                    <img class="logo-image" src="imgs/image.png" alt="IARCS · Instituto de Arquitectura y Ciudad Sostenibles">
+                </span>
+            </a>
+            <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Menú">☰</button>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="index.html#proyectos">Registro</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="proyectos">
+            <h1 class="section-title">Documentos PDF</h1>
+            <p class="section-subtitle">Gracias por registrarte. Selecciona un documento para consultarlo o descargarlo.</p>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <iframe class="document-preview" src="PDF%C2%B4S/Libro%20Arquitectura%20Sustentable%2022Oct26_publicado.pdf#view=FitH" title="Vista previa del Libro Arquitectura Sustentable" loading="lazy"></iframe>
+                    <div class="project-body">
+                        <span class="project-category">Libro PDF</span>
+                        <h2>Libro Arquitectura Sustentable 22Oct26_publicado</h2>
+                        <p>Publicación sobre arquitectura sustentable.</p>
+                        <a class="project-pdf-link" href="PDF%C2%B4S/Libro%20Arquitectura%20Sustentable%2022Oct26_publicado.pdf" target="_blank" rel="noopener">Abrir o descargar PDF</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <iframe class="document-preview" src="PDF%C2%B4S/MUESTRA%20Portafolio%20Arq.%20Mauricio%20Ruiz%202024.pdf#view=FitH" title="Vista previa del portafolio de Arquitectura 2024" loading="lazy"></iframe>
+                    <div class="project-body">
+                        <span class="project-category">Portafolio PDF</span>
+                        <h2>MUESTRA Portafolio Arq. Mauricio Ruiz 2024</h2>
+                        <p>Portafolio de proyectos de arquitectura.</p>
+                        <a class="project-pdf-link" href="PDF%C2%B4S/MUESTRA%20Portafolio%20Arq.%20Mauricio%20Ruiz%202024.pdf" target="_blank" rel="noopener">Abrir o descargar PDF</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <iframe class="document-preview" src="PDF%C2%B4S/RUIZ%20Casa%20Sustentable.pdf#view=FitH" title="Vista previa de Casa Sustentable" loading="lazy"></iframe>
+                    <div class="project-body">
+                        <span class="project-category">Proyecto PDF</span>
+                        <h2>RUIZ Casa Sustentable</h2>
+                        <p>Proyecto de casa sustentable.</p>
+                        <a class="project-pdf-link" href="PDF%C2%B4S/RUIZ%20Casa%20Sustentable.pdf" target="_blank" rel="noopener">Abrir o descargar PDF</a>
+                    </div>
+                </article>
+            </div>
+            <div class="documents-actions">
+                <a href="index.html">Volver al inicio</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 IARCS · Instituto de Arquitectura y Ciudad Sostenibles</p>
+    </footer>
+</body>
+</html>

@@ -1,62 +1,22 @@
-let projects = [];
+const DOWNLOAD_REGISTRATION_FORM =
+    'https://docs.google.com/forms/d/e/1FAIpQLScANbRpoVNZ0ywNdoHgXqQ61UAhk2oL9sC5ncrJ0Hw66h4Z_Q/viewform';
 
-        // Crea una tarjeta por cada PDF, con vista previa y enlace para abrirlo.
-        function renderProjects() {
+        // Muestra el formulario para registrarse y regresar a la página de documentos.
+        function renderDocumentAccess() {
             const grid = document.getElementById('projectsGrid');
             if (!grid) return;
 
-            grid.innerHTML = projects.map((project) => {
-                const title = project.title.replace(/\.pdf$/i, '');
-                const pdfUrl = project.pdf.split('/').map(encodeURIComponent).join('/');
-                const safeTitle = escapeHtml(title);
-                const safePdfUrl = escapeHtml(pdfUrl);
-
-                return `
-                <article class="project-card project-card--pdf fade-in">
-                    <iframe class="project-pdf-preview" src="${safePdfUrl}#view=FitH" title="Vista previa de ${safeTitle}" loading="lazy"></iframe>
+            grid.innerHTML = `
+                <article class="project-card fade-in">
                     <div class="project-body">
-                        <span class="project-category">Documento PDF</span>
-                        <h3>${safeTitle}</h3>
-                        <p>Consulta la vista previa o abre el documento completo.</p>
-                        <a class="project-pdf-link" href="${safePdfUrl}" target="_blank" rel="noopener">Abrir PDF completo</a>
+                        <span class="project-category">Registro de descargas</span>
+                        <h3>Regístrate para consultar los documentos</h3>
+                        <p>Completa el formulario y luego abre la página con las tarjetas de los PDF.</p>
+                        <a class="project-pdf-link" href="${DOWNLOAD_REGISTRATION_FORM}" target="_blank" rel="noopener">Ir al formulario de registro</a>
                     </div>
                 </article>
             `;
-            }).join('');
-
             observeFadeIns();
-        }
-
-        // Obtiene el índice de PDF generado durante el despliegue y carga sus proyectos.
-        async function loadProjects() {
-            const grid = document.getElementById('projectsGrid');
-            if (!grid) return;
-
-            try {
-                const response = await fetch('pdfs.json');
-                if (!response.ok) {
-                    throw new Error(`No se pudo cargar pdfs.json (${response.status}).`);
-                }
-
-                const pdfs = await response.json();
-                if (!Array.isArray(pdfs) || !pdfs.every(pdf => typeof pdf === 'string')) {
-                    throw new Error('El índice de PDF no tiene un formato válido.');
-                }
-
-                projects = pdfs.map(pdf => ({
-                    title: pdf.split('/').pop(),
-                    pdf
-                }));
-                if (projects.length === 0) {
-                    grid.textContent = 'Aún no hay documentos PDF disponibles.';
-                    return;
-                }
-
-                renderProjects();
-            } catch (error) {
-                console.error('Error al cargar los documentos PDF:', error);
-                grid.textContent = 'No se pudieron cargar los documentos PDF. Intenta actualizar la página más tarde.';
-            }
         }
 
         // Mantiene el promedio y el total de votos de las estrellas mientras la página está abierta.
@@ -110,13 +70,6 @@ let projects = [];
 
         
 
-        // Convierte texto en contenido HTML seguro antes de insertarlo en la página.
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
         // Añade la clase visible a los elementos cuando entran en la pantalla.
         function observeFadeIns() {
             const observer = new IntersectionObserver((entries) => {
@@ -130,8 +83,8 @@ let projects = [];
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         }
 
-        // Espera a que exista el HTML para cargar los PDF y activar las animaciones.
+        // Espera a que exista el HTML para mostrar el formulario y activar las animaciones.
         document.addEventListener('DOMContentLoaded', () => {
-            loadProjects();
+            renderDocumentAccess();
             observeFadeIns();
         });
