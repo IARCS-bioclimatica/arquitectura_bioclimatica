@@ -48,21 +48,27 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
         }
 
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--verde-claro);
+        .logo-image-crop {
+            position: relative;
+            display: block;
+            flex: 0 0 54px;
+            width: 54px;
+            height: 54px;
+            overflow: hidden;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
+            background: var(--blanco);
+        }
+
+        .logo-image {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 120px;
+            max-width: none;
+            height: auto;
+            transform: translateX(-50%);
         }
 
         nav a {
@@ -635,6 +641,16 @@
         @media (max-width: 768px) {
             .header-inner {
                 height: 60px;
+            }
+
+            .logo-image-crop {
+                flex-basis: 48px;
+                width: 48px;
+                height: 48px;
+            }
+
+            .logo-image {
+                width: 107px;
             }
 
             nav {
